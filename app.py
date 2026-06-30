@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Detect Streamlit Community Cloud (no local Ollama available)
+IS_CLOUD = os.environ.get("HOME") == "/home/appuser"
+
 st.set_page_config(
     page_title="Responsible AI Evaluation Pipeline",
     page_icon="🛡️",
@@ -94,9 +97,10 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+_available_models = [k for k in MODEL_OPTIONS if not (IS_CLOUD and MODEL_OPTIONS[k]["provider"] == "ollama")]
 selected_model_name = st.selectbox(
     "Evaluation model",
-    options=list(MODEL_OPTIONS.keys()),
+    options=_available_models,
     index=0,
     help="All models are open-source weights. Groq models use your existing key.",
 )
