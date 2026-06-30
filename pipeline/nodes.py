@@ -45,8 +45,8 @@ def _build_llm(model: str, temperature: float):
         return ChatOpenAI(
             model=model,
             max_tokens=512,
-            openai_api_key=os.environ.get("CEREBRAS_API_KEY"),
-            openai_api_base="https://api.cerebras.ai/v1",
+            api_key=os.environ.get("CEREBRAS_API_KEY"),
+            base_url="https://api.cerebras.ai/v1",
             **kwargs,
         )
 
@@ -56,8 +56,8 @@ def _build_llm(model: str, temperature: float):
         return ChatOpenAI(
             model=model,
             max_tokens=512,
-            openai_api_key=os.environ.get("SAMBANOVA_API_KEY"),
-            openai_api_base="https://api.sambanova.ai/v1",
+            api_key=os.environ.get("SAMBANOVA_API_KEY"),
+            base_url="https://api.sambanova.ai/v1",
             **kwargs,
         )
 
