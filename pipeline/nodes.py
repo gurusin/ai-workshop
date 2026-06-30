@@ -83,17 +83,17 @@ def _get_smart():
 
 
 def _invoke(llm, prompt: str) -> str:
+    import openai as _openai
+    from groq import RateLimitError as _GroqRateLimitError
+    _rate_limit_types = (_openai.RateLimitError, _GroqRateLimitError)
+
     for attempt in range(6):
         try:
             return llm.invoke(prompt).content
-        except Exception as e:
-            msg = str(e).lower()
-            if "rate_limit" in msg or "429" in str(e) or "rate limit" in msg:
-                if attempt == 5:
-                    raise
-                time.sleep(2 ** attempt)
-            else:
+        except _rate_limit_types:
+            if attempt == 5:
                 raise
+            time.sleep(2 ** attempt)
 
 
 def _parse_json(text: str) -> dict:
