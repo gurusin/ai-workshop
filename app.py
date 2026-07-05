@@ -272,26 +272,27 @@ def render_home():
                 st.session_state["page"] = app["id"]
                 st.rerun()
 
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown('<div class="section-label">Coming soon</div>', unsafe_allow_html=True)
-    soon_cols = st.columns(len(soon), gap="large")
-    for col, app in zip(soon_cols, soon):
-        tags_html = "".join(f'<span class="tag">{t}</span>' for t in app["tags"])
-        with col:
-            st.markdown(
-                f"""
-                <div class="app-card" style="opacity:0.72;">
-                    <div class="card-icon">{app['icon']}</div>
-                    <div class="badge-soon">◌ COMING SOON</div>
-                    <div class="card-title">{app['title']}</div>
-                    <div class="card-desc">{app['desc']}</div>
-                    <div class="card-why"><strong>Why it matters:</strong> {app['why']}</div>
-                    <div class="tags">{tags_html}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-            st.button("Coming Soon ⏳", key=f"nav_{app['id']}", disabled=True, use_container_width=True)
+    if soon:
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown('<div class="section-label">Coming soon</div>', unsafe_allow_html=True)
+        soon_cols = st.columns(len(soon), gap="large")
+        for col, app in zip(soon_cols, soon):
+            tags_html = "".join(f'<span class="tag">{t}</span>' for t in app["tags"])
+            with col:
+                st.markdown(
+                    f"""
+                    <div class="app-card" style="opacity:0.72;">
+                        <div class="card-icon">{app['icon']}</div>
+                        <div class="badge-soon">◌ COMING SOON</div>
+                        <div class="card-title">{app['title']}</div>
+                        <div class="card-desc">{app['desc']}</div>
+                        <div class="card-why"><strong>Why it matters:</strong> {app['why']}</div>
+                        <div class="tags">{tags_html}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                st.button("Coming Soon ⏳", key=f"nav_{app['id']}", disabled=True, use_container_width=True)
 
     st.markdown(
         '<div class="footer">Built with LangGraph · Streamlit · Open-source LLMs</div>',
