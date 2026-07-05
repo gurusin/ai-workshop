@@ -64,72 +64,123 @@ st.markdown(
     [data-testid="stAppViewContainer"] > .main { padding-top: 0; }
     [data-testid="stHeader"] { display: none; }
 
-    /* Section headings */
+    /* ── Section label ──────────────────────────────────────────────────────── */
     .section-label {
         font-size: 0.72rem;
         font-weight: 700;
-        letter-spacing: 1.5px;
+        letter-spacing: 1.8px;
         text-transform: uppercase;
         color: #9ca3af;
-        margin: 0 0 16px;
-        padding-bottom: 8px;
+        margin: 0 0 20px;
+        padding-bottom: 10px;
         border-bottom: 1px solid #e5e7eb;
     }
 
-    /* Cards */
-    .app-card {
+    /* ── Landing page cards ─────────────────────────────────────────────────── */
+    .lp-card {
         background: white;
         border: 1px solid #e5e7eb;
-        border-radius: 16px;
-        padding: 24px 22px 18px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        height: 100%;
+        border-radius: 14px;
+        padding: 0 0 18px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        display: flex;
+        flex-direction: column;
+        min-height: 340px;
+        overflow: hidden;
+        transition: box-shadow 0.18s, transform 0.18s;
+        cursor: default;
     }
-    .card-icon  { font-size: 2.2rem; line-height: 1; margin-bottom: 10px; }
-    .card-title { font-size: 1rem; font-weight: 700; color: #111827; line-height: 1.35; margin-bottom: 8px; }
-    .card-desc  { font-size: 0.84rem; color: #6b7280; line-height: 1.6; margin-bottom: 12px; }
-    .card-why {
-        background: #f0f9ff;
-        border-left: 3px solid #38bdf8;
-        border-radius: 0 6px 6px 0;
-        padding: 7px 11px;
-        font-size: 0.79rem;
-        color: #0369a1;
-        line-height: 1.5;
-        margin-bottom: 12px;
+    .lp-card:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        transform: translateY(-3px);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
-    .tag {
-        background: #f3f4f6; color: #374151;
-        border-radius: 20px; padding: 2px 9px;
-        font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2px;
+    .lp-card-accent {
+        height: 5px;
+        border-radius: 14px 14px 0 0;
     }
-    .badge-live {
-        display: inline-flex; align-items: center; gap: 5px;
+    .lp-card-body {
+        padding: 18px 18px 0;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .lp-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .lp-card-icon { font-size: 2rem; line-height: 1; }
+    .lp-badge-live {
         background: #dcfce7; color: #166534;
         border: 1px solid #86efac;
         border-radius: 20px; padding: 2px 9px;
-        font-size: 0.7rem; font-weight: 700;
-        margin-bottom: 10px;
+        font-size: 0.67rem; font-weight: 700;
+        white-space: nowrap;
     }
-    .badge-soon {
-        display: inline-flex; align-items: center; gap: 5px;
+    .lp-badge-soon {
         background: #fef9c3; color: #854d0e;
         border: 1px solid #fde68a;
         border-radius: 20px; padding: 2px 9px;
-        font-size: 0.7rem; font-weight: 700;
-        margin-bottom: 10px;
+        font-size: 0.67rem; font-weight: 700;
+        white-space: nowrap;
+    }
+    .lp-card-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #111827;
+        line-height: 1.35;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .lp-card-desc {
+        font-size: 0.8rem;
+        color: #6b7280;
+        line-height: 1.65;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 12px;
+        flex: 1;
+    }
+    .lp-card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+    .lp-tag {
+        background: #f3f4f6;
+        color: #374151;
+        border-radius: 20px;
+        padding: 2px 8px;
+        font-size: 0.65rem;
+        font-weight: 600;
     }
 
-    /* Score bar */
+    /* ── Keep old selectors used by inner pages ──────────────────────────────── */
+    .app-card { background:white; border:1px solid #e5e7eb; border-radius:16px; padding:24px 22px 18px; box-shadow:0 1px 4px rgba(0,0,0,0.05); }
+    .card-icon  { font-size:2.2rem; line-height:1; margin-bottom:10px; }
+    .card-title { font-size:1rem; font-weight:700; color:#111827; line-height:1.35; margin-bottom:8px; }
+    .card-desc  { font-size:0.84rem; color:#6b7280; line-height:1.6; margin-bottom:12px; }
+    .card-why   { background:#f0f9ff; border-left:3px solid #38bdf8; border-radius:0 6px 6px 0; padding:7px 11px; font-size:0.79rem; color:#0369a1; line-height:1.5; margin-bottom:12px; }
+    .tags       { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
+    .tag        { background:#f3f4f6; color:#374151; border-radius:20px; padding:2px 9px; font-size:0.7rem; font-weight:600; }
+    .badge-live { display:inline-flex; align-items:center; gap:5px; background:#dcfce7; color:#166534; border:1px solid #86efac; border-radius:20px; padding:2px 9px; font-size:0.7rem; font-weight:700; margin-bottom:10px; }
+    .badge-soon { display:inline-flex; align-items:center; gap:5px; background:#fef9c3; color:#854d0e; border:1px solid #fde68a; border-radius:20px; padding:2px 9px; font-size:0.7rem; font-weight:700; margin-bottom:10px; }
+
+    /* ── Score bar (inner pages) ─────────────────────────────────────────────── */
     .score-bar-wrap { background:#e9ecef; border-radius:4px; height:8px; margin:2px 0 6px 0; }
     .score-bar-fill { height:8px; border-radius:4px; }
 
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
     .footer {
         margin-top: 60px; padding: 20px;
         text-align: center; color: #9ca3af;
         font-size: 0.8rem; border-top: 1px solid #f3f4f6;
     }
+
+    /* ── Landing page button row ──────────────────────────────────────────────── */
+    div[data-testid="stHorizontalBlock"] div[data-testid="column"] > div[data-testid="stVerticalBlock"] > div:last-child { margin-bottom: 0; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -236,66 +287,134 @@ def render_header(sub_title: str = ""):
     )
 
 
+# Accent colour per app (top stripe on card)
+_CARD_ACCENT = {
+    "telco_churn":  "linear-gradient(90deg,#6366f1,#8b5cf6)",
+    "rai_eval":     "linear-gradient(90deg,#0ea5e9,#06b6d4)",
+    "sports_intel": "linear-gradient(90deg,#f59e0b,#f97316)",
+    "rg_warning":   "linear-gradient(90deg,#ef4444,#f97316)",
+    "churn":        "linear-gradient(90deg,#10b981,#059669)",
+    "fraud":        "linear-gradient(90deg,#8b5cf6,#6366f1)",
+}
+
+
+@st.dialog("App details", width="large")
+def _show_app_modal(app_id: str):
+    app = next((a for a in APPS if a["id"] == app_id), None)
+    if not app:
+        return
+    tags_html = "".join(
+        f'<span style="background:#f3f4f6;color:#374151;border-radius:20px;padding:3px 10px;font-size:0.74rem;font-weight:600;">{t}</span>'
+        for t in app["tags"]
+    )
+    accent = _CARD_ACCENT.get(app["id"], "linear-gradient(90deg,#6366f1,#8b5cf6)")
+    badge = (
+        '<span style="background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:20px;padding:3px 10px;font-size:0.72rem;font-weight:700;">&#9679; LIVE</span>'
+        if app["status"] == "live" else
+        '<span style="background:#fef9c3;color:#854d0e;border:1px solid #fde68a;border-radius:20px;padding:3px 10px;font-size:0.72rem;font-weight:700;">&#9675; COMING SOON</span>'
+    )
+    st.markdown(
+        f"""
+        <div style="height:5px;border-radius:6px;background:{accent};margin-bottom:20px;"></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+            <span style="font-size:2.8rem;line-height:1;">{app['icon']}</span>
+            <div>
+                {badge}
+                <div style="font-size:1.25rem;font-weight:800;color:#111827;margin-top:6px;line-height:1.3;">{app['title']}</div>
+            </div>
+        </div>
+        <p style="font-size:0.88rem;color:#374151;line-height:1.8;margin-bottom:18px;">{app['desc']}</p>
+        <div style="background:#f0f9ff;border-left:4px solid #38bdf8;border-radius:0 8px 8px 0;padding:11px 15px;margin-bottom:18px;">
+            <div style="font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0369a1;margin-bottom:4px;">Why it matters</div>
+            <div style="font-size:0.85rem;color:#0369a1;line-height:1.65;">{app['why']}</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;">{tags_html}</div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if app["status"] == "live":
+        if st.button("▶ Launch App", type="primary", use_container_width=True, key=f"modal_launch_{app['id']}"):
+            st.session_state["page"] = app["id"]
+            st.session_state.pop("_modal_app", None)
+            st.rerun()
+    else:
+        st.button("Coming Soon ⏳", disabled=True, use_container_width=True, key=f"modal_soon_{app['id']}")
+
+
 def render_home():
     render_header()
+
+    # Open modal if requested (set by "more…" buttons below)
+    modal_id = st.session_state.pop("_modal_app", None)
+    if modal_id:
+        _show_app_modal(modal_id)
+
     st.markdown(
-        "<p style='color:#6b7280;font-size:0.92rem;margin:-10px 0 28px;line-height:1.6;'>"
+        "<p style='color:#6b7280;font-size:0.92rem;margin:-10px 0 32px;line-height:1.7;'>"
         "Where LangGraph agents scout live odds, LLMs referee promotional content, "
-        "and responsible AI isn't just a slide — it <em>actually blocks things</em>. "
+        "and responsible AI isn't just a slide &mdash; it <em>actually blocks things</em>. "
         "If something breaks mid-demo, we'll call it emergent behaviour."
         "</p>",
         unsafe_allow_html=True,
     )
 
-    live = [a for a in APPS if a["status"] == "live"]
-    soon = [a for a in APPS if a["status"] == "soon"]
+    all_apps = APPS  # already ordered: live first, soon at end
+    NCOLS = 4
+    chunks = [all_apps[i : i + NCOLS] for i in range(0, len(all_apps), NCOLS)]
 
     st.markdown('<div class="section-label">Live demos</div>', unsafe_allow_html=True)
-    live_cols = st.columns(len(live), gap="large")
-    for col, app in zip(live_cols, live):
-        tags_html = "".join(f'<span class="tag">{t}</span>' for t in app["tags"])
-        with col:
-            st.markdown(
-                f"""
-                <div class="app-card">
-                    <div class="card-icon">{app['icon']}</div>
-                    <div class="badge-live">● LIVE</div>
-                    <div class="card-title">{app['title']}</div>
-                    <div class="card-desc">{app['desc']}</div>
-                    <div class="card-why"><strong>Why it matters:</strong> {app['why']}</div>
-                    <div class="tags">{tags_html}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-            if st.button(f"▶ Open — {app['title'][:28]}…", key=f"nav_{app['id']}", type="primary", use_container_width=True):
-                st.session_state["page"] = app["id"]
-                st.rerun()
 
-    if soon:
-        st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown('<div class="section-label">Coming soon</div>', unsafe_allow_html=True)
-        soon_cols = st.columns(len(soon), gap="large")
-        for col, app in zip(soon_cols, soon):
-            tags_html = "".join(f'<span class="tag">{t}</span>' for t in app["tags"])
-            with col:
+    for chunk in chunks:
+        cols = st.columns(NCOLS, gap="medium")
+        for idx in range(NCOLS):
+            with cols[idx]:
+                if idx >= len(chunk):
+                    continue
+                app = chunk[idx]
+                accent   = _CARD_ACCENT.get(app["id"], "linear-gradient(90deg,#6366f1,#8b5cf6)")
+                badge    = (
+                    '<span class="lp-badge-live">&#9679; LIVE</span>'
+                    if app["status"] == "live" else
+                    '<span class="lp-badge-soon">&#9675; SOON</span>'
+                )
+                tags_html = "".join(
+                    f'<span class="lp-tag">{t}</span>'
+                    for t in app["tags"][:4]
+                )
                 st.markdown(
                     f"""
-                    <div class="app-card" style="opacity:0.72;">
-                        <div class="card-icon">{app['icon']}</div>
-                        <div class="badge-soon">◌ COMING SOON</div>
-                        <div class="card-title">{app['title']}</div>
-                        <div class="card-desc">{app['desc']}</div>
-                        <div class="card-why"><strong>Why it matters:</strong> {app['why']}</div>
-                        <div class="tags">{tags_html}</div>
+                    <div class="lp-card">
+                        <div class="lp-card-accent" style="background:{accent};"></div>
+                        <div class="lp-card-body">
+                            <div class="lp-card-top">
+                                <span class="lp-card-icon">{app['icon']}</span>
+                                {badge}
+                            </div>
+                            <div class="lp-card-title">{app['title']}</div>
+                            <div class="lp-card-desc">{app['desc']}</div>
+                            <div class="lp-card-tags">{tags_html}</div>
+                        </div>
                     </div>
                     """,
                     unsafe_allow_html=True,
                 )
-                st.button("Coming Soon ⏳", key=f"nav_{app['id']}", disabled=True, use_container_width=True)
+                st.markdown("<div style='height:6px;'></div>", unsafe_allow_html=True)
+                btn_cols = st.columns([1, 1], gap="small")
+                with btn_cols[0]:
+                    if st.button("Details →", key=f"more_{app['id']}", use_container_width=True):
+                        st.session_state["_modal_app"] = app["id"]
+                        st.rerun()
+                with btn_cols[1]:
+                    if app["status"] == "live":
+                        if st.button("▶ Launch", key=f"nav_{app['id']}", type="primary", use_container_width=True):
+                            st.session_state["page"] = app["id"]
+                            st.rerun()
+                    else:
+                        st.button("Coming Soon", key=f"nav_{app['id']}", disabled=True, use_container_width=True)
+                st.markdown("<div style='height:18px;'></div>", unsafe_allow_html=True)
 
     st.markdown(
-        '<div class="footer">Built with LangGraph · Streamlit · Open-source LLMs</div>',
+        '<div class="footer">Built with LangGraph &middot; XGBoost &middot; SHAP &middot; Streamlit &middot; Open-source LLMs</div>',
         unsafe_allow_html=True,
     )
 
