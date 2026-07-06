@@ -1,4 +1,4 @@
-aimport os
+import os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 IS_CLOUD = os.environ.get("HOME") == "/home/appuser"
